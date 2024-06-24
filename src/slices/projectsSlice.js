@@ -7,8 +7,15 @@ export const projectApiSlice = apiSlice.injectEndpoints({
             query: (data) => PROJECTS_URL,
             keepUnusedDataFor: 5,
             providesTags: ['Projects']
+        }),
+        getProjectDetails: builder.query({
+            query: (projId) => ({
+                url: `${PROJECTS_URL}/${projId}`
+            }),
+            keepUnusedDataFor: 5,
+            providesTags: ['Projects']
         })
     })
 })
 
-export const { useGetProjectsQuery } = projectApiSlice;
+export const { useGetProjectsQuery, useGetProjectDetailsQuery } = projectApiSlice;

@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const CardLoader = () => {
   return (
     <div className="shadow-sm">
-        <Skeleton height={150} width={400} />
+        <Skeleton height={150} width={234} />
         <Skeleton count={3} />
     </div>
   )

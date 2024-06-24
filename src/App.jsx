@@ -5,6 +5,7 @@ import ExperienceScreen from "./screens/ExperienceScreen";
 import Breadcrumb from './components/Breadcrumb';
 import ProjectsScreen from './screens/ProjectsScreen';
 import SkillsScreen from './screens/SkillsScreen';
+import ProjectDetailsScreen from './screens/ProjectDetailsScreen';
 
 export default function App() {
   return (
@@ -14,13 +15,14 @@ export default function App() {
         <NavigationBar />
 
         {/* Main Components */}
-        <main className=" grow py-12 px-14">
+        <main className="w-4/5 grow py-12 px-14">
           <Breadcrumb />
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/experience' element={<ExperienceScreen />} />
             <Route path='/projects' element={<ProjectsScreen />} />
             <Route path='/skills' element={<SkillsScreen />} />
+            <Route path='/projects/:id' element={<ProjectDetailsScreen />} />
           </Routes>
         </main>
       </div>
