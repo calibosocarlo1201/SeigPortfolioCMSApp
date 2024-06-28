@@ -1,6 +1,6 @@
 import { ArrowLeft, Plus } from 'lucide-react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ScreenHeader = ({title, showCreateBtn ,showGoBackBtn, className }) => {
 
@@ -19,7 +19,7 @@ const ScreenHeader = ({title, showCreateBtn ,showGoBackBtn, className }) => {
           <h1 className='text-3xl'>{title}</h1>
         </div>
         
-        {showCreateBtn && <button type='button' className='bg-[#082f49] text-white py-2 px-4 rounded-lg flex gap-2 items-center'><Plus /> Create</button>}
+        {showCreateBtn && <Link to="./create"><button type='button' className='bg-[#082f49] text-white py-2 px-4 rounded-lg flex gap-2 items-center'><Plus /> Create</button></Link>}
       </div>
 
     </>

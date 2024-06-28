@@ -6,6 +6,7 @@ import Breadcrumb from './components/Breadcrumb';
 import ProjectsScreen from './screens/ProjectsScreen';
 import SkillsScreen from './screens/SkillsScreen';
 import ProjectDetailsScreen from './screens/ProjectDetailsScreen';
+import CreateProjectScreen from './screens/CreateProjectScreen';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path='/projects' element={<ProjectsScreen />} />
             <Route path='/skills' element={<SkillsScreen />} />
             <Route path='/projects/:id' element={<ProjectDetailsScreen />} />
+            <Route path='/projects/create' element={<CreateProjectScreen />} />
           </Routes>
         </main>
       </div>
