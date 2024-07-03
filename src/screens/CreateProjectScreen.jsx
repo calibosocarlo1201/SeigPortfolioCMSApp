@@ -6,6 +6,9 @@ import TagInputComponent from '../components/TagInputComponent';
 import { z } from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCreateProjectMutation } from '../slices/projectsSlice';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const schema = z.object({
   title: z.string().min(1, 'Project title is required'),
@@ -18,10 +21,14 @@ const schema = z.object({
 
 const CreateProjectScreen = () => {
 
+  const navigate = useNavigate();
+
   const [options, setOptions] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
 
   const { data: skills, isLoading: isLoadingSkills, erro: skillsErr } = useGetSkillsQuery();
+
+  const [createProject, { isLoading: loadingCreateProj, error: createProjErr}] = useCreateProjectMutation();
 
   useEffect(() => {
     if(skills){
@@ -40,7 +47,17 @@ const CreateProjectScreen = () => {
     }
   });
 
-  const onSubmit = data => {
+  const onSubmit = async (data) => {
+    try {
+
+      const response = await createProject(data).unwrap();
+      console.log(response);
+      toast.success('Project ');
+      navigate('/projects');
+      
+    } catch (error) {
+      console.log('Failed to create project:', error);
+    }
     console.log('Form Data', data)
   }
 

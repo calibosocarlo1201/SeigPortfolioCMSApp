@@ -7,27 +7,27 @@ import ProjectsScreen from './screens/ProjectsScreen';
 import SkillsScreen from './screens/SkillsScreen';
 import ProjectDetailsScreen from './screens/ProjectDetailsScreen';
 import CreateProjectScreen from './screens/CreateProjectScreen';
+import LoginScreen from './screens/LoginScreen';
+import Layout from './components/Layout';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   return (
     <Router>
-      <div className="w-full flex">
-        {/* Navigation Bar */}
-        <NavigationBar />
-
-        {/* Main Components */}
-        <main className="w-4/5 grow py-12 px-14">
-          <Breadcrumb />
-          <Routes>
+      <Layout>
+        <Routes>
+          <Route path='/login' element={<LoginScreen />} />
+          <Route path='' element={<PrivateRoute />}>
             <Route path='/' element={<Dashboard />} />
             <Route path='/experience' element={<ExperienceScreen />} />
             <Route path='/projects' element={<ProjectsScreen />} />
             <Route path='/skills' element={<SkillsScreen />} />
             <Route path='/projects/:id' element={<ProjectDetailsScreen />} />
             <Route path='/projects/create' element={<CreateProjectScreen />} />
-          </Routes>
-        </main>
-      </div>
+
+          </Route>
+        </Routes>
+      </Layout>
     </Router>
   )
 }

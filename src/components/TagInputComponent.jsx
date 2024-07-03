@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Select from 'react-select'
 
-const TagInputComponent = ({label, isLoading, error, errorMessage, options, value, onChangeHandler}) => {
+const TagInputComponent = forwardRef(({label, isLoading, error, errorMessage, options, value, onChangeHandler}, ref) => {
   return (
     <div className='mb-6'>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
@@ -13,6 +13,6 @@ const TagInputComponent = ({label, isLoading, error, errorMessage, options, valu
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   )
-}
+});
 
 export default TagInputComponent

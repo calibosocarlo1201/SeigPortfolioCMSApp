@@ -14,8 +14,15 @@ export const projectApiSlice = apiSlice.injectEndpoints({
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Projects']
+        }),
+        createProject: builder.mutation({
+            query: (project) => ({
+                url: PROJECTS_URL,
+                method: 'POST',
+                body: { ...project }
+            })
         })
     })
 })
 
-export const { useGetProjectsQuery, useGetProjectDetailsQuery } = projectApiSlice;
+export const { useGetProjectsQuery, useGetProjectDetailsQuery, useCreateProjectMutation } = projectApiSlice;
