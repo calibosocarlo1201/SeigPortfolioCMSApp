@@ -19,7 +19,8 @@ export const projectApiSlice = apiSlice.injectEndpoints({
             query: (project) => ({
                 url: PROJECTS_URL,
                 method: 'POST',
-                body: { ...project }
+                body: { ...project },
+                credentials: 'include'
             })
         })
     })
