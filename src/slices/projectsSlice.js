@@ -22,8 +22,16 @@ export const projectApiSlice = apiSlice.injectEndpoints({
                 body: { ...project },
                 credentials: 'include'
             })
+        }),
+        updateProject: builder.mutation({
+            query: (project) => ({
+                url: `${PROJECTS_URL}/${project.projId}`,
+                method: 'PUT',
+                body: project
+            }),
+            invalidatesTags: ['Projects'],
         })
     })
 })
 
-export const { useGetProjectsQuery, useGetProjectDetailsQuery, useCreateProjectMutation } = projectApiSlice;
+export const { useGetProjectsQuery, useGetProjectDetailsQuery, useCreateProjectMutation, useUpdateProjectMutation } = projectApiSlice;
