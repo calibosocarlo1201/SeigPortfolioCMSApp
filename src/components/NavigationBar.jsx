@@ -51,7 +51,17 @@ const NavigationBar = () => {
 
     useEffect(() => {
         const currentPath = location.pathname;
-        const currentIndex = navLinks.findIndex(link => link.path === currentPath);
+
+        // Find the longest matching path
+        const currentIndex = navLinks
+            .map(link => link.path)
+            .reduce((selectedIndex, path, index) => {
+                if (currentPath.startsWith(path) && (selectedIndex === -1 || path.length > navLinks[selectedIndex].path.length)) {
+                    return index;
+                }
+                return selectedIndex;
+            }, -1);
+
         setActiveNavIndex(currentIndex);
     }, [location.pathname]);
 
