@@ -45,13 +45,15 @@ const Details = ({project, refetch, images, setImages, projectId}) => {
             projId: projectId
         };
 
-        try {
-            const response = await updateProject(transformedData).unwrap();
-            toast.success('Project has been updated successfully');
-            navigate('/projects');
-        } catch (error) {
-            toast.error(error.data?.message);
-        }
+        console.log(transformedData)
+
+        // try {
+        //     const response = await updateProject(transformedData).unwrap();
+        //     toast.success('Project has been updated successfully');
+        //     navigate('/projects');
+        // } catch (error) {
+        //     toast.error(error.data?.message);
+        // }
     };
     
     useEffect(() => {
